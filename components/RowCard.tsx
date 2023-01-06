@@ -11,15 +11,25 @@ import {
 import clsx from "clsx"
 import Link from "next/link"
 import Image from "next/image"
-import React, {ReactNode} from "react"
+import React, {ReactNode, useState} from "react"
 import {Button} from "@mui/material";
 import {useRouter} from "next/router";
 
 export const RowCard: React.FC<{ label: string, price: string, imageUrl: string }> = ({label, price, imageUrl}) => {
     const router = useRouter()
+    const [count, setCount] = useState<number>(1)
 
     function openProduct() {
         router.push("/product")
+    }
+
+    function removeFromCart() {
+        if (typeof window == 'undefined') {
+            return
+        }
+
+        const cartCount: number = Number(window.localStorage.getItem("cart-count"))
+        window.localStorage.setItem("cart-count", String(cartCount - 1))
     }
 
     return (
@@ -27,9 +37,10 @@ export const RowCard: React.FC<{ label: string, price: string, imageUrl: string 
             className="px-2 py-2 max-w-2xl bg-gray-100 border border-gray-100 rounded-[16px] dark:border-gray-100 flex items-center">
             <a href="#">
                 {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                <Image  onMouseDown = {openProduct} className="rounded-t-lg" src="/images/img-2.png" width='100px' height='100px'/>
+                <Image onMouseDown={openProduct} className="rounded-t-lg" src="/images/img-2.png" width='100px'
+                       height='100px'/>
             </a>
-            <div className="flex-1 min-w-0 px-4 items-start" onMouseDown = {openProduct}>
+            <div className="flex-1 min-w-0 px-4 items-start" onMouseDown={openProduct}>
                 <p className="mb-1 font-normal text-gray-900 dark:text-gray-900 text-left">
                     {label}
                 </p>
@@ -45,11 +56,9 @@ export const RowCard: React.FC<{ label: string, price: string, imageUrl: string 
 
             <div className="flex flex-col self-stretch min-w-0 items-end">
                 <div className="flex flex-auto">
-                    <Link href={""}>
-                        <a className="leading-none hover:bg-gray-100 flex-shrink-0">
-                            <Close/>
-                        </a>
-                    </Link>
+                    <a className="leading-none hover:bg-gray-100 flex-shrink-0" onMouseDown={removeFromCart}>
+                        <Close/>
+                    </a>
                 </div>
 
                 <p
@@ -59,25 +68,21 @@ export const RowCard: React.FC<{ label: string, price: string, imageUrl: string 
 
 
                 <div className="flex flex-row self-stretch min-w-0 items-center bg-black rounded-lg px-2 py-0.5">
-                    <div className="flex flex-0">
-                        <Link href={""}>
-                            <a className="leading-none text-white flex-shrink-0">
-                                <Remove/>
-                            </a>
-                        </Link>
+                    <div className="flex flex-0" onClick={() => setCount(count - 1)}>
+                        <a className="leading-none text-white flex-shrink-0">
+                            <Remove/>
+                        </a>
                     </div>
 
                     <p
                         className="flex flex-auto font-small text-white dark:text-white text-center px-2">
-                        1
+                        {count}
                     </p>
 
-                    <div className="flex flex-0">
-                        <Link href={""}>
-                            <a className="leading-none text-white flex-shrink-0">
-                                <Add/>
-                            </a>
-                        </Link>
+                    <div className="flex flex-0" onClick={() => setCount(count + 1)}>
+                        <a className="leading-none text-white flex-shrink-0">
+                            <Add/>
+                        </a>
                     </div>
                 </div>
             </div>

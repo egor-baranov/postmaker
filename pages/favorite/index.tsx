@@ -6,12 +6,26 @@ import {Card} from "../../components/Card";
 import clsx from "clsx";
 
 const Home: NextPage = () => {
+
+    function favoriteCount() {
+        if (typeof window == 'undefined') {
+            return 0
+        }
+
+        const favoriteCount: number = Number(window.localStorage.getItem("favorite-count"))
+        return favoriteCount
+    }
+
     return (
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8 pb-4 font-bold">Избранное</h1>
             <div className={clsx("grid gap-4", styles.grid)}>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""></Card>
+                {
+                    Array.from({length: favoriteCount()}).map((v) => (
+                        <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
+                              selectedByDefault={true}></Card>
+                    ))
+                }
             </div>
         </MainLayout>
     )
