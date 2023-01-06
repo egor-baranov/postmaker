@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 
             {
                 Array.from({length: cartCount()}).map((v) => (
-                    <div className="py-3">
+                    <div key= "$v" className="py-3">
                         <RowCard label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""></RowCard>
                     </div>
                 ))

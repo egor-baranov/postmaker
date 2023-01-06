@@ -22,7 +22,7 @@ const Home: NextPage = () => {
             <div className={clsx("grid gap-4", styles.grid)}>
                 {
                     Array.from({length: favoriteCount()}).map((v) => (
-                        <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
+                        <Card key = "${v}" label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
                               selectedByDefault={true}></Card>
                     ))
                 }
