@@ -67,8 +67,12 @@ const Home: NextPage = () => {
     }
 
     function getWindowSize() {
-        const {innerWidth, innerHeight} = window;
-        return {innerWidth, innerHeight};
+        if (window) {
+            const {innerWidth, innerHeight} = window;
+            return {innerWidth, innerHeight};
+        }
+
+        return {innerWidth: 0, innerHeight: 0};
     }
 
     const [windowSize, setWindowSize] = useState(getWindowSize());
@@ -78,10 +82,10 @@ const Home: NextPage = () => {
             setWindowSize(getWindowSize());
         }
 
-        window.addEventListener('resize', handleWindowResize);
+        if (window) window.addEventListener('resize', handleWindowResize);
 
         return () => {
-            window.removeEventListener('resize', handleWindowResize);
+            if (window) window.removeEventListener('resize', handleWindowResize);
         };
     }, []);
 
@@ -100,7 +104,7 @@ const Home: NextPage = () => {
                     </a>
                 </div>
 
-                <div className = {isMobile ? "mt-8" : "ml-8"}>
+                <div className={isMobile ? "mt-8" : "ml-8"}>
                     <ProductDetails addToCart={addToCart} isMobile={isMobile}></ProductDetails>
                 </div>
             </div>
