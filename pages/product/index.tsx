@@ -8,7 +8,7 @@ import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import {SearchBar} from "../../components/SearchBar";
 import {FavoriteBorder, ShoppingBagOutlined} from "@mui/icons-material";
-import {router} from "next/router";
+import {router} from "next/client";
 import clsx from "clsx";
 
 const SizeButton: React.FC<{text: string}> = ({text}) => {
