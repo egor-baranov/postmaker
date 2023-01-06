@@ -3,8 +3,9 @@ import clsx from "clsx"
 import Link from "next/link"
 import React, { ReactNode } from "react"
 import styles from "./Header.module.css"
+import {MobileNavBar} from "./MobileNavBar";
 
-const HeaderLink: React.FC<{ link: string; text: string }> = ({ link, text }) => {
+export const HeaderLink: React.FC<{ link: string; text: string }> = ({ link, text }) => {
     return (
         <Link href={link}>
             <a className="my-2 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0">{text}</a>
@@ -12,7 +13,7 @@ const HeaderLink: React.FC<{ link: string; text: string }> = ({ link, text }) =>
     )
 }
 
-const HeaderLinkIcon: React.FC<{ link: string; label: string; children: ReactNode }> = ({ link, label, children }) => {
+export const HeaderLinkIcon: React.FC<{ link: string; label: string; children: ReactNode }> = ({ link, label, children }) => {
     return (
         <Link href={link}>
             <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label={label}>
@@ -48,6 +49,15 @@ export const Header: React.FC = () => {
                     <Search />
                 </HeaderLinkIcon>
             </div>
+
+            {/*<ul className={clsx("menu flex items-center align-center", styles.menu)}>*/}
+            {/*    <li className="menu-item">*/}
+            {/*        <button>Menu 1</button>*/}
+            {/*    </li>*/}
+            {/*    <li className="menu-item">*/}
+            {/*        <button>Menu 2</button>*/}
+            {/*    </li>*/}
+            {/*</ul>*/}
         </div>
     )
 }

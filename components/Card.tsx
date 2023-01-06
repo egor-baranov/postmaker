@@ -4,8 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import React, {ReactNode, useState} from "react"
 import colors from "tailwindcss/colors"
-import {OverridableStringUnion} from "@mui/types";
-import {SvgIconPropsColorOverrides} from "@mui/material/SvgIcon/SvgIcon";
+import {router} from "next/router";
 
 export const Card: React.FC<{label: string, price: string, imageUrl: string}> = ({label, price, imageUrl}) => {
     const [color, setColor] = useState<string>(colors.gray[100])
@@ -18,9 +17,14 @@ export const Card: React.FC<{label: string, price: string, imageUrl: string}> = 
         setColor(colors.gray[100])
     }
 
+    function openProduct() {
+        router.push("/product")
+    }
+
     return (
         <div
             className="relative max-w-sm bg-gray-100 border border-gray-100 rounded-lg dark:border-gray-100 px-2 py-2"
+            onMouseDown={openProduct}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >

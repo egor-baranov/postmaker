@@ -13,16 +13,21 @@ import Link from "next/link"
 import Image from "next/image"
 import React, {ReactNode} from "react"
 import {Button} from "@mui/material";
+import {router} from "next/router";
 
 export const RowCard: React.FC<{ label: string, price: string, imageUrl: string }> = ({label, price, imageUrl}) => {
+    function openProduct() {
+        router.push("/product")
+    }
+
     return (
         <div
             className="px-2 py-2 max-w-2xl bg-gray-100 border border-gray-100 rounded-[16px] dark:border-gray-100 flex items-center">
             <a href="#">
                 {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                <Image className="rounded-t-lg" src="/images/img-2.png" width='100px' height='100px'/>
+                <Image  onMouseDown = {openProduct} className="rounded-t-lg" src="/images/img-2.png" width='100px' height='100px'/>
             </a>
-            <div className="flex-1 min-w-0 px-4 items-start">
+            <div className="flex-1 min-w-0 px-4 items-start" onMouseDown = {openProduct}>
                 <p className="mb-1 font-normal text-gray-900 dark:text-gray-900 text-left">
                     {label}
                 </p>

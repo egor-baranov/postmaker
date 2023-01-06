@@ -1,0 +1,13 @@
+@media(max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(2, 48%);
+        justify-self: start;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 6120px) {
+    .grid {
+        grid-template-columns: repeat(3, 32%);
+        justify-self: start;
+    }
+}
