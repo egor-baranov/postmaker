@@ -4,10 +4,12 @@ import Link from "next/link"
 import Image from "next/image"
 import React, {ReactNode, useState} from "react"
 import colors from "tailwindcss/colors"
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 export const Card: React.FC<{label: string, price: string, imageUrl: string}> = ({label, price, imageUrl}) => {
     const [color, setColor] = useState<string>(colors.gray[100])
+
+    const router = useRouter()
 
     function onMouseEnter() {
         setColor('black')

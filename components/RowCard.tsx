@@ -13,9 +13,11 @@ import Link from "next/link"
 import Image from "next/image"
 import React, {ReactNode} from "react"
 import {Button} from "@mui/material";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 
 export const RowCard: React.FC<{ label: string, price: string, imageUrl: string }> = ({label, price, imageUrl}) => {
+    const router = useRouter()
+
     function openProduct() {
         router.push("/product")
     }

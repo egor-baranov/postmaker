@@ -8,7 +8,7 @@ import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import {SearchBar} from "../../components/SearchBar";
 import {FavoriteBorder, ShoppingBagOutlined} from "@mui/icons-material";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 import clsx from "clsx";
 
 const SizeButton: React.FC<{text: string}> = ({text}) => {
@@ -21,6 +21,8 @@ const SizeButton: React.FC<{text: string}> = ({text}) => {
 }
 
 const Home: NextPage = () => {
+    const router = useRouter()
+
     function addToCart() {
         router.push("/cart")
     }
