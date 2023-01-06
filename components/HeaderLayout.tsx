@@ -1,11 +1,14 @@
 import React, { ReactNode } from "react"
 import { Header } from "./Header"
+import {Footer} from "./Footer";
 
 export const HeaderLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <>
             <Header />
-            {children}
+            <>
+                {children}
+            </>
         </>
     )
 }

@@ -3,6 +3,8 @@ import type {NextPage} from "next"
 import {MainLayout} from "../components/Layout"
 import {Card} from "../components/Card";
 import clsx from "clsx";
+import {Footer} from "../components/Footer";
+import React from "react";
 
 const Home: NextPage = () => {
     return (
