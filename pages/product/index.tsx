@@ -67,7 +67,7 @@ const Home: NextPage = () => {
     }
 
     function getWindowSize() {
-        if (window) {
+        if (typeof window !== "undefined") {
             const {innerWidth, innerHeight} = window;
             return {innerWidth, innerHeight};
         }
@@ -82,10 +82,10 @@ const Home: NextPage = () => {
             setWindowSize(getWindowSize());
         }
 
-        if (window) window.addEventListener('resize', handleWindowResize);
+        window.addEventListener('resize', handleWindowResize);
 
         return () => {
-            if (window) window.removeEventListener('resize', handleWindowResize);
+            window.removeEventListener('resize', handleWindowResize);
         };
     }, []);
 
