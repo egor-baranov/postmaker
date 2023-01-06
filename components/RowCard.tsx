@@ -14,7 +14,6 @@ import Image from "next/image"
 import React, {ReactNode, useState} from "react"
 import {Button} from "@mui/material";
 import {useRouter} from "next/router";
-import {max} from "@popperjs/core/lib/utils/math";
 
 export const RowCard: React.FC<{ label: string, price: string, imageUrl: string }> = ({label, price, imageUrl}) => {
     const router = useRouter()
@@ -69,7 +68,7 @@ export const RowCard: React.FC<{ label: string, price: string, imageUrl: string 
 
 
                 <div className="flex flex-row self-stretch min-w-0 items-center bg-black rounded-lg px-2 py-0.5">
-                    <div className="flex flex-0" onClick={() => setCount(max(0, count - 1))}>
+                    <div className="flex flex-0" onClick={() => setCount(count > 0 ? count - 1 : 0)}>
                         <a className="leading-none text-white flex-shrink-0">
                             <Remove/>
                         </a>
