@@ -39,9 +39,9 @@ const DropdownMenu: React.FC<{ onHide: Function }> = ({onHide}) => {
                     <HeaderLink link="/#sales" text="Скидки"/>
                 </div>
 
-                <a className="flex-1 absolute top-0 right-2 mx-auto leading-none text-black flex-shrink-0">
+                <a className="flex-1 absolute top-0 right-0 mx-auto leading-none text-black flex-shrink-0">
                     <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => onHide()}>
-                        <Close/>
+                        <Close fontSize="large"/>
                     </button>
                 </a>
             </div>
@@ -62,19 +62,29 @@ export const MobileNavBar: React.FC = () => {
         <div className={clsx("w-full fixed z-50 top-0 bg-white", styles.header)}>
             <div className="mx-auto max-w-2xl flex flex-row items-center overflow-auto pr-2">
 
-                <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => setIsOpen(true)}><Menu/></button>
+                <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => setIsOpen(true)}>
+                    <Menu fontSize="large"/>
+                </button>
 
                 <div className="flex-grow"></div>
 
-                <HeaderLinkIcon link="/cart" label="Корзина">
-                    <ShoppingBagOutlined/>
-                </HeaderLinkIcon>
-                <HeaderLinkIcon link="/favorite" label="Избранное">
-                    <FavoriteBorder/>
-                </HeaderLinkIcon>
-                <HeaderLinkIcon link="/search" label="Поиск">
-                    <Search/>
-                </HeaderLinkIcon>
+                <Link href="/cart">
+                    <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Корзина">
+                        <ShoppingBagOutlined fontSize="large"/>
+                    </a>
+                </Link>
+
+                <Link href="/favorite">
+                    <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Избранное">
+                        <FavoriteBorder fontSize="large"/>
+                    </a>
+                </Link>
+
+                <Link href="/search">
+                    <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Поиск">
+                        <Search fontSize="large"/>
+                    </a>
+                </Link>
 
                 {isOpen ? <DropdownMenu onHide={() => setIsOpen(false)}></DropdownMenu> : null}
             </div>
