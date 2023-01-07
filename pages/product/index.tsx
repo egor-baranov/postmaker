@@ -28,7 +28,7 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
 
     const [size, setSize] = useState<string>("L")
     const [color, setColor] = useState<string>("black")
-    const [favorite, setFavorite] = useState<boolean>(true)
+    const [favorite, setFavorite] = useState<boolean>(false)
 
     function updateSize(newSize: string) {
         setSize(newSize)
