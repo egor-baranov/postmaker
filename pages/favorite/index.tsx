@@ -1,11 +1,13 @@
 import styles from './index.module.css'
 import type {NextPage} from "next"
-import React from "react";
+import React, {useState} from "react";
 import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import clsx from "clsx";
 
 const Home: NextPage = () => {
+
+    const [count, setCount] = useState<number>(favoriteCount())
 
     function favoriteCount() {
         if (typeof window == 'undefined') {
@@ -16,14 +18,18 @@ const Home: NextPage = () => {
         return favoriteCount
     }
 
+    function updateFavorite(newCount: number) {
+        setCount(newCount)
+    }
+
     return (
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8 pb-4 font-bold">Избранное</h1>
             <div className={clsx("grid gap-4", styles.grid)}>
                 {
-                    Array.from({length: favoriteCount()}).map((v) => (
+                    Array.from({length: count}).map((v) => (
                         <Card key = "${v}" label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                              selectedByDefault={true}></Card>
+                              selectedByDefault={true} onUpdate={updateFavorite}></Card>
                     ))
                 }
             </div>

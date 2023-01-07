@@ -113,7 +113,7 @@ const Home: NextPage = () => {
         };
     }, []);
 
-    const isMobile = windowSize.innerWidth <= 1200
+    const isMobile = windowSize.innerWidth <= 800
 
     return (
         <MainLayout>

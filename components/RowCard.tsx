@@ -15,7 +15,7 @@ import React, {ReactNode, useState} from "react"
 import {Button} from "@mui/material";
 import {useRouter} from "next/router";
 
-export const RowCard: React.FC<{ label: string, price: string, imageUrl: string }> = ({label, price, imageUrl}) => {
+export const RowCard: React.FC<{ label: string, price: string, imageUrl: string, onUpdate: Function }> = ({label, price, imageUrl, onUpdate}) => {
     const router = useRouter()
     const [count, setCount] = useState<number>(1)
 
@@ -29,12 +29,16 @@ export const RowCard: React.FC<{ label: string, price: string, imageUrl: string 
         }
 
         const cartCount: number = Number(window.localStorage.getItem("cart-count"))
-        window.localStorage.setItem("cart-count", String(cartCount - 1))
+        const newCount = cartCount > 0 ? cartCount - 1 : 0
+
+        window.localStorage.setItem("cart-count", String(cartCount > 0 ? cartCount - 1 : 0))
+
+        onUpdate(newCount)
     }
 
     return (
         <div
-            className="px-2 py-2 max-w-2xl bg-gray-100 border border-gray-100 rounded-[16px] dark:border-gray-100 flex items-center">
+            className="px-2 py-2 max-w-2xl bg-gray-100 border border-gray-100 rounded-[16px] flex items-center">
             <a href="#">
                 {/* eslint-disable-next-line jsx-a11y/alt-text */}
                 <Image onMouseDown={openProduct} className="rounded-t-lg" src="/images/img-2.png" width='100px'

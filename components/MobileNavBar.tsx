@@ -1,8 +1,18 @@
-import {Favorite, FavoriteBorder, Search, ShoppingBagOutlined, ShoppingCart} from "@mui/icons-material"
+import {
+    Close,
+    Favorite,
+    FavoriteBorder,
+    Instagram,
+    Menu,
+    Search,
+    ShoppingBagOutlined,
+    ShoppingCart,
+    Telegram
+} from "@mui/icons-material"
 import clsx from "clsx"
 import Link from "next/link"
-import React, {ReactNode} from "react"
-import styles from "./Header.module.css"
+import React, {ReactNode, useState} from "react"
+import styles from "./DropdownMenu.module.css"
 import {HeaderLink, HeaderLinkIcon} from "./Header";
 
 const DropdownButton: React.FC = () => {
@@ -17,61 +27,58 @@ const DropdownButton: React.FC = () => {
     )
 }
 
-const DropdownMenu: React.FC = () => {
+const DropdownMenu: React.FC<{ onHide: Function }> = ({onHide}) => {
     return (
-    <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
-        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-            <li>
-                <a href="#"
-                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-            </li>
-            <li>
-                <a href="#"
-                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-            </li>
-            <li>
-                <a href="#"
-                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-            </li>
-            <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
-                    out</a>
-            </li>
-        </ul>
-    </div>
+        <div className={clsx("w-full fixed bg-black/60", styles.menu)} onMouseDown={() => onHide()}>
+            <div className="relative h-full flex-row mr-24 bg-white" onMouseDown={(e) => e.stopPropagation()}>
+                <div className="flex flex-col pt-16">
+                    <HeaderLink link="/" text="Новинки"/>
+                    <HeaderLink link="/#shirts" text="Футболки"/>
+                    <HeaderLink link="/#hoodies" text="Толстовки"/>
+                    <HeaderLink link="/#accessories" text="Аксессуары"/>
+                    <HeaderLink link="/#sales" text="Скидки"/>
+                </div>
 
-)
-}
-
-export const MobileNavBar: React.FC = () => {
-    return (
-        <div className={clsx("w-full fixed z-50 top-0 bg-white", styles.header)}>
-            <div className="mx-auto max-w-2xl flex flex-row items-center overflow-auto pr-2">
-                <Link href="/">
-                    <a className="py-2 px-4 font-bold flex-shrink-0 hover:bg-gray-100 rounded-lg">
-                        Новинки
-                    </a>
-                </Link>
-                <HeaderLink link="/#shirts" text="Футболки" />
-                <HeaderLink link="/#hoodies" text="Толстовки" />
-                <HeaderLink link="/#accessories" text="Аксессуары" />
-                <HeaderLink link="/#sales" text="Скидки" />
-
-                <div className="flex-grow"></div>
-
-                <HeaderLinkIcon link="/cart" label="Корзина">
-                    <ShoppingBagOutlined />
-                </HeaderLinkIcon>
-                <HeaderLinkIcon link="/favorite" label="Избранное">
-                    <FavoriteBorder />
-                </HeaderLinkIcon>
-                <HeaderLinkIcon link="/search" label="Поиск">
-                    <Search />
-                </HeaderLinkIcon>
-
-                {/*<DropdownButton></DropdownButton>*/}
-                <DropdownMenu></DropdownMenu>
+                <a className="flex-1 absolute top-0 right-2 mx-auto leading-none text-black flex-shrink-0">
+                    <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => onHide()}>
+                        <Close/>
+                    </button>
+                </a>
             </div>
         </div>
     )
 }
+
+
+export const MobileNavBar: React.FC = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    function hideMenu() {
+        setIsOpen(false)
+    }
+
+    return (
+        <div className={clsx("w-full fixed z-50 top-0 bg-white", styles.header)}>
+            <div className="mx-auto max-w-2xl flex flex-row items-center overflow-auto pr-2">
+
+                <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => setIsOpen(true)}><Menu/></button>
+
+                <div className="flex-grow"></div>
+
+                <HeaderLinkIcon link="/cart" label="Корзина">
+                    <ShoppingBagOutlined/>
+                </HeaderLinkIcon>
+                <HeaderLinkIcon link="/favorite" label="Избранное">
+                    <FavoriteBorder/>
+                </HeaderLinkIcon>
+                <HeaderLinkIcon link="/search" label="Поиск">
+                    <Search/>
+                </HeaderLinkIcon>
+
+                {isOpen ? <DropdownMenu onHide={() => setIsOpen(false)}></DropdownMenu> : null}
+            </div>
+        </div>
+    )
+}
+

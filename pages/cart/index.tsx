@@ -3,13 +3,15 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import type {NextPage} from "next"
 import Link from "next/link"
-import React from "react";
+import React, {useState} from "react";
 import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import {SearchBar} from "../../components/SearchBar";
 import {RowCard} from "../../components/RowCard";
 
 const Home: NextPage = () => {
+
+    const [count, setCount] = useState<number>(cartCount())
 
     function cartCount() {
         if (typeof window == 'undefined') {
@@ -20,14 +22,19 @@ const Home: NextPage = () => {
         return cartCount
     }
 
+    function updateCart( newCount: number) {
+        setCount( newCount)
+    }
+
     return (
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8  font-bold">Корзина</h1>
 
             {
-                Array.from({length: cartCount()}).map((v) => (
-                    <div key= "$v" className="py-3">
-                        <RowCard label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""></RowCard>
+                Array.from({length: count}).map((v) => (
+                    <div key="$v" className="py-3">
+                        <RowCard label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
+                                 onUpdate={updateCart}></RowCard>
                     </div>
                 ))
             }
@@ -39,7 +46,7 @@ const Home: NextPage = () => {
 
             <div className="flex justify-between self-stretch">
                 <h2 className="pt-8 font-semibold">Стоимость товаров</h2>
-                <h2 className="pt-8 font-semibold">32970 p</h2>
+                <h2 className="pt-8 font-semibold">{7490 * count} p</h2>
             </div>
 
             <div className="flex justify-between self-stretch">
@@ -49,7 +56,7 @@ const Home: NextPage = () => {
 
             <div className="flex justify-between self-stretch">
                 <h2 className="text-2xl pb-4 font-bold">Итого</h2>
-                <h2 className="text-3xl pb-4 font-bold items-end">33490 р.</h2>
+                <h2 className="text-3xl pb-4 font-bold items-end">{7490 * count + 490} р.</h2>
             </div>
 
             <div className="relative pb-8">

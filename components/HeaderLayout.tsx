@@ -1,11 +1,37 @@
-import React, { ReactNode } from "react"
+import React, {ReactNode, useEffect, useState} from "react"
 import { Header } from "./Header"
 import {Footer} from "./Footer";
+import {MobileNavBar} from "./MobileNavBar";
 
 export const HeaderLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+    function getWindowSize() {
+        if (typeof window !== "undefined") {
+            const {innerWidth, innerHeight} = window;
+            return {innerWidth, innerHeight};
+        }
+
+        return {innerWidth: 0, innerHeight: 0};
+    }
+
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+            setWindowSize(getWindowSize());
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
+    const isMobile = windowSize.innerWidth <= 800
+
     return (
         <>
-            <Header />
+            { isMobile ? <MobileNavBar /> : <Header/>}
             <>
                 {children}
             </>
