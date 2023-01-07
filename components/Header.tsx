@@ -7,7 +7,7 @@ import {MobileNavBar} from "./MobileNavBar";
 
 export const HeaderLink: React.FC<{ link: string; text: string }> = ({ link, text }) => {
     return (
-        <Link href={link}>
+        <Link href={link} >
             <a className="my-2 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0">{text}</a>
         </Link>
     )

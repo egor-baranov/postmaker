@@ -7,25 +7,28 @@ import React, {useEffect, useState} from "react";
 import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import {SearchBar} from "../../components/SearchBar";
-import {FavoriteBorder, ShoppingBagOutlined} from "@mui/icons-material";
+import {Favorite, FavoriteBorder, FavoriteOutlined, ShoppingBagOutlined} from "@mui/icons-material";
 import {useRouter} from "next/router";
 import clsx from "clsx";
+import colors from "tailwindcss/colors"
 
 const SizeButton: React.FC<{ text: string, onClick: Function, selected: boolean }> = ({text, onClick, selected}) => {
     return (
         <button
             onMouseDown={() => onClick()}
             type="button"
-            className= {selected ? "text-white bg-black focus:ring-4 font-medium text-sm px-1 py-2 border border-gray-200 rounded-lg" :
-                "text-black bg-white focus:ring-4 font-medium text-sm px-1 py-2 border border-gray-200 rounded-lg"}>
+            className={selected ? "text-white bg-black hover:bg-gray-900 font-medium text-sm px-1 py-2 border border-gray-200 rounded-lg" :
+                "text-black bg-white hover:bg-gray-100 font-medium text-sm px-1 py-2 border border-gray-200 rounded-lg"}>
             {text}
         </button>
     )
 }
 
 const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToCart, isMobile}) => {
+
     const [size, setSize] = useState<string>("L")
     const [color, setColor] = useState<string>("black")
+    const [favorite, setFavorite] = useState<boolean>(true)
 
     function updateSize(newSize: string) {
         setSize(newSize)
@@ -33,6 +36,19 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
 
     function updateColor(newColor: string) {
         setColor(newColor)
+    }
+
+    function addToFavorite() {
+        setFavorite(!favorite)
+
+        if (typeof window == 'undefined') {
+            return
+        }
+
+        const favoriteCount: number = Number(window.localStorage.getItem("favorite-count"))
+        const newCount = !favorite ? favoriteCount + 1 : favoriteCount - 1
+
+        window.localStorage.setItem("favorite-count", String(newCount))
     }
 
     return (
@@ -57,7 +73,8 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
                 <div className={"grid gap-2 grid-cols-2 px-2"}>
                     <SizeButton text="Белый" onClick={() => updateColor("white")}
                                 selected={color == "white"}></SizeButton>
-                    <SizeButton text="Серый" onClick={() => updateColor("gray")} selected={color == "gray"}></SizeButton>
+                    <SizeButton text="Серый" onClick={() => updateColor("gray")}
+                                selected={color == "gray"}></SizeButton>
                     <SizeButton text="Черный" onClick={() => updateColor("black")}
                                 selected={color == "black"}></SizeButton>
                     <SizeButton text="Бежевый" onClick={() => updateColor("beige")}
@@ -68,8 +85,14 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
 
                 <button type="button"
                         onClick={addToCart}
-                        className="text-white bg-black focus:ring-4 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
+                        className="text-white bg-black hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
                       <ShoppingBagOutlined/> В корзину
+                </button>
+
+             <button type="button"
+                     onClick={addToFavorite}
+                     className="text-black bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
+                      {favorite ? <Favorite/> : <FavoriteBorder/>} {favorite ? "В избранном" : "В избранное"}
                 </button>
             </span>
     )

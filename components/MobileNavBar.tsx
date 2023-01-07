@@ -14,6 +14,7 @@ import Link from "next/link"
 import React, {ReactNode, useState} from "react"
 import styles from "./DropdownMenu.module.css"
 import {HeaderLink, HeaderLinkIcon} from "./Header";
+import {useRouter} from "next/router";
 
 const DropdownButton: React.FC = () => {
     return (
@@ -28,20 +29,56 @@ const DropdownButton: React.FC = () => {
 }
 
 const DropdownMenu: React.FC<{ onHide: Function }> = ({onHide}) => {
+    const router = useRouter()
+
     return (
         <div className={clsx("w-full fixed bg-black/60", styles.menu)} onMouseDown={() => onHide()}>
             <div className="relative h-full flex-row mr-24 bg-white" onMouseDown={(e) => e.stopPropagation()}>
                 <div className="flex flex-col pt-16">
-                    <HeaderLink link="/" text="Новинки"/>
-                    <HeaderLink link="/#shirts" text="Футболки"/>
-                    <HeaderLink link="/#hoodies" text="Толстовки"/>
-                    <HeaderLink link="/#accessories" text="Аксессуары"/>
-                    <HeaderLink link="/#sales" text="Скидки"/>
+                    <button className="my-2 mx-4 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0"
+                            onClick={() => {
+                                router.push("/");
+                                onHide()
+                            }}>
+                        Новинки
+                    </button>
+
+                    <button className="my-2 mx-4 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0"
+                            onClick={() => {
+                                router.push("/#shirts");
+                                onHide()
+                            }}>
+                        Футболки
+                    </button>
+
+                    <button className="my-2 mx-4 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0"
+                            onClick={() => {
+                                router.push("/#hoodies");
+                                onHide()
+                            }}>
+                        Толстовки
+                    </button>
+
+                    <button className="my-2 mx-4 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0"
+                            onClick={() => {
+                                router.push("/#accessories");
+                                onHide()
+                            }}>
+                        Аксессуары
+                    </button>
+
+                    <button className="my-2 mx-4 py-2 px-4 rounded-lg hover:bg-gray-100 flex-shrink-0"
+                            onClick={() => {
+                                router.push("/#sales");
+                                onHide()
+                            }}>
+                        Скидки
+                    </button>
                 </div>
 
                 <a className="flex-1 absolute top-0 right-0 mx-auto leading-none text-black flex-shrink-0">
                     <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => onHide()}>
-                        <Close fontSize="large"/>
+                        <Close sx={{fontSize: "32px"}}/>
                     </button>
                 </a>
             </div>
@@ -63,26 +100,26 @@ export const MobileNavBar: React.FC = () => {
             <div className="mx-auto max-w-2xl flex flex-row items-center overflow-auto pr-2">
 
                 <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => setIsOpen(true)}>
-                    <Menu fontSize="large"/>
+                    <Menu sx={{fontSize: "32px"}}/>
                 </button>
 
                 <div className="flex-grow"></div>
 
                 <Link href="/cart">
                     <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Корзина">
-                        <ShoppingBagOutlined fontSize="large"/>
+                        <ShoppingBagOutlined sx={{fontSize: "32px"}}/>
                     </a>
                 </Link>
 
                 <Link href="/favorite">
-                    <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Избранное">
-                        <FavoriteBorder fontSize="large"/>
+                    <a className="p-2 m-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Избранное">
+                        <FavoriteBorder sx={{fontSize: "32px"}}/>
                     </a>
                 </Link>
 
                 <Link href="/search">
                     <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Поиск">
-                        <Search fontSize="large"/>
+                        <Search sx={{fontSize: "32px"}}/>
                     </a>
                 </Link>
 
