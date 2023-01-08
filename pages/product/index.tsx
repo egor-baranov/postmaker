@@ -163,9 +163,9 @@ const Home: NextPage = () => {
 
                     <div className="snap-mandatory snap-x flex overflow-x-auto md:overflow-scroll">
                         {
-                            Array.from({length: 10}).map((v) => (
+                            Array.from({length: 10}).map((_, v) => (
                                 <button key={String(v) + "preview"}
-                                        className={v as number == imageIndex ?
+                                        className={v === imageIndex ?
                                             "flex-shrink-0 snap-center p-2 mx-1 my-2 rounded-lg bg-gray-200 hover:bg-gray-200"
                                             : "flex-shrink-0 snap-center p-2 mx-1 my-2 rounded-lg bg-gray-100 hover:bg-gray-200"
                                         }
