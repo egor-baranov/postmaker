@@ -147,25 +147,25 @@ const Home: NextPage = () => {
                         : "w-1/2 snap-mandatory snap-x bg-gray-100 rounded-lg dark:border-gray-100 px-2 py-2 flex overflow-x-auto md:overflow-scroll items-center mr-8"
                     }>
 
-                    <section className="flex-shrink-0 snap-center px-16">
+                    <section className="flex-shrink-0 snap-center px-8">
                         <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
-                    <section className="flex-shrink-0 snap-center px-16">
+                    <section className="flex-shrink-0 snap-center px-8">
                         <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
-                    <section className="flex-shrink-0 snap-center px-16">
+                    <section className="flex-shrink-0 snap-center px-8">
                         <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
-                    <section className="flex-shrink-0 snap-center px-16">
+                    <section className="flex-shrink-0 snap-center px-8">
                         <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
                 </div>
 
-                <div className={(isMobile ? "mt-8" : "ml-8") + "w-1/2"}>
+                <div className={isMobile ? "mt-8 w-1/2" : "w-1/2"}>
                     <ProductDetails addToCart={addToCart} isMobile={isMobile}></ProductDetails>
                 </div>
             </div>
