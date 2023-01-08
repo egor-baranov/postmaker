@@ -8,28 +8,26 @@ import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import {SearchBar} from "../../components/SearchBar";
 import {RowCard} from "../../components/RowCard";
+import {Favorite, FavoriteBorder} from "@mui/icons-material";
+import {useRouter} from "next/router";
 
-const Home: NextPage = () => {
-
-    const [count, setCount] = useState<number>(cartCount())
-
-    function cartCount() {
-        if (typeof window == 'undefined') {
-            return 0
-        }
-
-        const cartCount: number = Number(window.localStorage.getItem("cart-count"))
-        return cartCount
-    }
-
-    function updateCart( newCount: number) {
-        setCount( newCount)
-    }
-
+const EmptyCart: React.FC<{ action: Function }> = ({action}) => {
     return (
-        <MainLayout>
-            <h1 className="text-3xl mb-4 pt-8  font-bold">Корзина</h1>
+        <div className="w-full flex flex-col items-center">
+            <h2 className="text-2xl pt-8 font-bold">В корзине пусто</h2>
+            <h2 className="text-medium pt-4 font-medium pb-4">Добавьте товары к заказу на главной странице</h2>
+            <button type="button"
+                    onClick={() => action()}
+                    className="text-black bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
+                На главную
+            </button>
+        </div>
+    )
+}
 
+const Cart: React.FC<{ count: number, updateCart: Function }> = ({count, updateCart}) => {
+    return (
+        <div>
             {
                 Array.from({length: count}).map((v) => (
                     <div key="$v" className="py-3">
@@ -70,7 +68,36 @@ const Home: NextPage = () => {
                     className="w-full mb-8 text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-4 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
                 Оплатить
             </button>
+        </div>
+    )
+}
 
+
+const Home: NextPage = () => {
+
+    const router = useRouter()
+
+    const [count, setCount] = useState<number>(cartCount())
+
+    function cartCount() {
+        if (typeof window == 'undefined') {
+            return 0
+        }
+
+        const cartCount: number = Number(window.localStorage.getItem("cart-count"))
+        return cartCount
+    }
+
+    function updateCart(newCount: number) {
+        setCount(newCount)
+    }
+
+    return (
+        <MainLayout>
+            <h1 className="w-full text-3xl mb-4 pt-8 font-bold">Корзина</h1>
+
+            {cartCount() > 0 ? <Cart count={count} updateCart={updateCart}/> :
+                <EmptyCart action={() => router.push("/")}/>}
         </MainLayout>
     )
 }
