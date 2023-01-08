@@ -150,19 +150,19 @@ const Home: NextPage = () => {
                     }>
 
                     <section className="flex-shrink-0 snap-center">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
                     <section className="flex-shrink-0 snap-center">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
                     <section className="flex-shrink-0 snap-center">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
                     <section className="flex-shrink-0 snap-center">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "300px" : "300px"}/>
                     </section>
 
                 </div>
