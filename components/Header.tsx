@@ -26,7 +26,7 @@ export const HeaderLinkIcon: React.FC<{ link: string; label: string; children: R
 export const Header: React.FC = () => {
     return (
         <div className={clsx("w-full fixed z-50 top-0 bg-white", styles.header)}>
-            <div className="mx-auto max-w-2xl flex flex-row items-center overflow-auto pr-2">
+            <div className="mx-auto max-w-2xl flex flex-row items-center pr-2">
                 <Link href="/">
                     <a className="py-2 px-4 font-bold flex-shrink-0 hover:bg-gray-100 rounded-lg">
                         Новинки

@@ -142,16 +142,32 @@ const Home: NextPage = () => {
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8 pb-4 font-bold">Adidas x Pharrell Williams Basics Hoodie</h1>
 
-            <div className={isMobile ? "flex justify-center flex-col pb-16" : "flex justify-center flex-row"}>
+            <div className={isMobile ? "flex justify-center flex-col mb-16" : "flex justify-center flex-row mb-16"}>
                 <div
-                    className="bg-gray-100 rounded-lg dark:border-gray-100 px-2 py-2 flex flex-auto flex-col justify-around items-center">
-                    <a href="#">
-                        {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                        <Image className="rounded-t-lg" src="/images/img-2.png" width='400px' height='400px'/>
-                    </a>
+                    className={isMobile ?
+                        "w-full snap-mandatory snap-x bg-gray-100 rounded-lg dark:border-gray-100 px-2 py-2 flex overflow-x-auto md:overflow-scroll items-center mb-8"
+                        : "w-1/2 snap-mandatory snap-x bg-gray-100 rounded-lg dark:border-gray-100 px-2 py-2 flex overflow-x-auto md:overflow-scroll items-center mr-8"
+                    }>
+
+                    <section className="flex-shrink-0 snap-center">
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                    </section>
+
+                    <section className="flex-shrink-0 snap-center">
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                    </section>
+
+                    <section className="flex-shrink-0 snap-center">
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                    </section>
+
+                    <section className="flex-shrink-0 snap-center">
+                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "500px" : "300px"} height={isMobile ? "500px" : "300px"}/>
+                    </section>
+
                 </div>
 
-                <div className={isMobile ? "mt-8" : "ml-8"}>
+                <div className={(isMobile ? "mt-8" : "ml-8") + "w-1/2"}>
                     <ProductDetails addToCart={addToCart} isMobile={isMobile}></ProductDetails>
                 </div>
             </div>
