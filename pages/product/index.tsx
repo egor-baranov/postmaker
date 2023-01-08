@@ -98,7 +98,10 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
 
 
 const Home: NextPage = () => {
+
     const router = useRouter()
+
+    const [imageIndex, setImageIndex] = useState<number>(0)
 
     function addToCart() {
         if (typeof window == 'undefined') {
@@ -141,28 +144,39 @@ const Home: NextPage = () => {
             <h1 className="text-3xl mb-4 pt-8 pb-4 font-bold">Adidas x Pharrell Williams Basics Hoodie</h1>
 
             <div className={isMobile ? "flex justify-center flex-col mb-16" : "flex justify-center flex-row mb-16"}>
-                <div
-                    className={isMobile ?
-                        "w-full snap-mandatory snap-x bg-gray-100 rounded-lg dark:border-gray-100 px-2 py-2 flex overflow-x-auto md:overflow-scroll items-center mb-8"
-                        : "w-1/2 snap-mandatory snap-x bg-gray-100 rounded-lg dark:border-gray-100 px-2 py-2 flex overflow-x-auto md:overflow-scroll items-center mr-8"
-                    }>
 
-                    <section className="flex-shrink-0 snap-center p-8">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
-                    </section>
+                <div className={isMobile ?
+                    "w-full bg-gray-100 rounded-lg dark:border-gray-100 mb-8 flex flex-col justify-between pb-0"
+                    : "w-1/2 bg-gray-100 rounded-lg dark:border-gray-100 mr-8 flex flex-col justify-between pb-0"
+                }>
+                    <div className="snap-mandatory snap-x flex overflow-x-auto md:overflow-scroll">
+                        {
+                            Array.from({length: 10}).map((v) => (
+                                <section key={String(v) + "image"} className="flex-shrink-0 snap-center p-8">
+                                    <img className="rounded-t-lg" src="/images/img-2.png"
+                                         width={isMobile ? "300px" : "300px"}
+                                         height={isMobile ? "300px" : "300px"}/>
+                                </section>
+                            ))
+                        }
+                    </div>
 
-                    <section className="flex-shrink-0 snap-center p-8">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
-                    </section>
-
-                    <section className="flex-shrink-0 snap-center p-8">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
-                    </section>
-
-                    <section className="flex-shrink-0 snap-center p-8">
-                        <img className="rounded-t-lg" src="/images/img-2.png" width= {isMobile ? "300px" : "300px"} height={isMobile ? "300px" : "300px"}/>
-                    </section>
-
+                    <div className="snap-mandatory snap-x flex overflow-x-auto md:overflow-scroll">
+                        {
+                            Array.from({length: 10}).map((v) => (
+                                <button key={String(v) + "preview"}
+                                        className={v as number == imageIndex ?
+                                            "flex-shrink-0 snap-center p-2 mx-1 my-2 rounded-lg bg-gray-200 hover:bg-gray-200"
+                                            : "flex-shrink-0 snap-center p-2 mx-1 my-2 rounded-lg bg-gray-100 hover:bg-gray-200"
+                                        }
+                                        onClick={() => setImageIndex(v as number)}>
+                                    <img className="" src="/images/img-2.png"
+                                         width={isMobile ? "48px" : "48px"}
+                                         height={isMobile ? "48px" : "48px"}/>
+                                </button>
+                            ))
+                        }
+                    </div>
                 </div>
 
                 <div className={isMobile ? "w-full" : "w-1/2"}>
