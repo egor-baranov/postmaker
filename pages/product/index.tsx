@@ -53,9 +53,7 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
 
     return (
         <span
-            className="flex flex-auto flex-col justify-between rounded-[16px] border border-gray-200">
-
-                <h1 className="text-medium mb-4 pt-8 pb-4 font-bold text-center px-2">Adidas x Pharrell Williams Basics Hoodie</h1>
+            className="flex flex-auto flex-col justify-between rounded-[16px] border border-gray-200 pt-8">
 
                 <h1 className="text-medium mb-4 pt-0 pb-2 font-medium text-center">Размер</h1>
 
