@@ -165,7 +165,7 @@ const Home: NextPage = () => {
 
                 </div>
 
-                <div className={isMobile ? "mt-8 w-1/2" : "w-1/2"}>
+                <div className={isMobile ? "mt-8 w-full" : "w-1/2"}>
                     <ProductDetails addToCart={addToCart} isMobile={isMobile}></ProductDetails>
                 </div>
             </div>
