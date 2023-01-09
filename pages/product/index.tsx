@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import type {NextPage} from "next"
 import Link from "next/link"
-import React, {useEffect, useState} from "react";
+import React, {MutableRefObject, useEffect, useRef, useState} from "react";
 import {MainLayout} from "../../components/Layout";
 import {Card} from "../../components/Card";
 import {SearchBar} from "../../components/SearchBar";
@@ -11,6 +11,7 @@ import {Favorite, FavoriteBorder, FavoriteOutlined, ShoppingBagOutlined} from "@
 import {useRouter} from "next/router";
 import clsx from "clsx";
 import colors from "tailwindcss/colors"
+import html from './index.module.css'
 
 const SizeButton: React.FC<{ text: string, onClick: Function, selected: boolean }> = ({text, onClick, selected}) => {
     return (
@@ -96,12 +97,13 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
     )
 }
 
-
 const Home: NextPage = () => {
 
     const router = useRouter()
 
     const [imageIndex, setImageIndex] = useState<number>(0)
+
+    const imageCarouselRefContainer = useRef(null)
 
     function addToCart() {
         if (typeof window == 'undefined') {
@@ -139,6 +141,7 @@ const Home: NextPage = () => {
 
     const isMobile = windowSize.innerWidth <= 800
 
+    // @ts-ignore
     return (
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8 pb-4 font-bold">Adidas x Pharrell Williams Basics Hoodie</h1>
@@ -149,14 +152,15 @@ const Home: NextPage = () => {
                     "w-full bg-gray-100 rounded-lg dark:border-gray-100 mb-8 flex flex-col justify-between pb-0"
                     : "w-1/2 bg-gray-100 rounded-lg dark:border-gray-100 mr-8 flex flex-col justify-between pb-0"
                 }>
-                    <div className="snap-mandatory snap-x flex overflow-x-auto md:overflow-scroll">
+                    <div ref={imageCarouselRefContainer}
+                         className={clsx("snap-mandatory snap-x flex overflow-x-auto md:overflow-scroll", html)}>
                         {
                             Array.from({length: 10}).map((v) => (
-                                <section key={String(v) + "image"} className="flex-shrink-0 snap-center p-8">
+                                <div key={String(v) + "image"} className="flex-shrink-0 snap-center p-8">
                                     <img className="rounded-t-lg" src="/images/img-2.png"
                                          width={isMobile ? "300px" : "300px"}
                                          height={isMobile ? "300px" : "300px"}/>
-                                </section>
+                                </div>
                             ))
                         }
                     </div>
@@ -169,7 +173,13 @@ const Home: NextPage = () => {
                                             "flex-shrink-0 snap-center p-2 mx-1 my-2 rounded-lg bg-gray-200 hover:bg-gray-200"
                                             : "flex-shrink-0 snap-center p-2 mx-1 my-2 rounded-lg bg-gray-100 hover:bg-gray-200"
                                         }
-                                        onClick={() => setImageIndex(v as number)}>
+                                        onClick={() => {
+                                            setImageIndex(v as number);
+                                            (imageCarouselRefContainer.current as unknown as Element).scrollTo({
+                                                behavior: 'smooth',
+                                                left: 150 + 332 * v
+                                            })
+                                        }}>
                                     <img className="" src="/images/img-2.png"
                                          width={isMobile ? "48px" : "48px"}
                                          height={isMobile ? "48px" : "48px"}/>
