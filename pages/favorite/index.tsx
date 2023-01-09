@@ -8,14 +8,17 @@ import {useRouter} from "next/router";
 
 const EmptyFavorite: React.FC<{ action: Function }> = ({action}) => {
     return (
-        <div className="w-full flex flex-col items-center">
-            <h2 className="text-2xl pt-8 font-bold">В избранном пусто</h2>
-            <h2 className="text-medium pt-4 font-medium pb-4">Добавьте товары в избранное на главной странице</h2>
-            <button type="button"
-                    onClick={() => action()}
-                    className="text-black bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
-                На главную
-            </button>
+        <div className="w-full min-h-screen flex justify-around items-center">
+            <div className="flex flex-col items-center">
+                <h2 className="text-2xl pt-8 font-bold">В избранном пусто</h2>
+                <h2 className="text-medium pt-4 font-medium pb-4 text-center">Добавьте товары в избранное на главной
+                    странице</h2>
+                <button type="button"
+                        onClick={() => action()}
+                        className="text-black bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
+                    На главную
+                </button>
+            </div>
         </div>
     )
 }
@@ -25,7 +28,7 @@ const Favorite: React.FC<{ count: number, updateFavorite: Function }> = ({count,
         <div className={clsx("grid gap-4", styles.grid)}>
             {
                 Array.from({length: count}).map((v) => (
-                    <Card key = "${v}" label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
+                    <Card key="${v}" label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
                           selectedByDefault={true} onUpdate={updateFavorite}></Card>
                 ))
             }

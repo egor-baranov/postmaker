@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
     const color = colors.white
 
     return (
-        <div className={clsx("w-full fixed bg-black", styles.footer)}>
+        <div className={clsx("w-full fixed bg-black min-h-[40%]", styles.footer)}>
             <div className="relative mx-auto max-w-2xl flex flex-row overflow-auto pr-2">
                 <a className="flex-1 text-white text-medium font-bold flex-shrink-0 rounded-lg">
                     OVG Designs, 2023

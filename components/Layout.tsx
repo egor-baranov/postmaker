@@ -4,7 +4,7 @@ import { HeaderSpacer } from "./HeaderLayout"
 
 export const MainLayout: React.FC<{ children: ReactNode; className?: string }> = ({ children, className }) => {
     return (
-        <main className={clsx("max-w-2xl mx-auto pt-4 px-4 min-h-screen", className)}>
+        <main className={clsx("max-w-2xl mx-auto pt-4 px-4 min-h-full", className)}>
             <HeaderSpacer />
             {children}
         </main>
@@ -12,7 +12,7 @@ export const MainLayout: React.FC<{ children: ReactNode; className?: string }> =
 }
 export const MainLayoutNoMargin: React.FC<{ children: ReactNode; className?: string }> = ({ children, className }) => {
     return (
-        <main className={clsx("max-2w-xl mx-auto pt-4 min-h-screen", className)}>
+        <main className={clsx("max-2w-xl mx-auto pt-4", className)}>
             <HeaderSpacer />
             {children}
         </main>
