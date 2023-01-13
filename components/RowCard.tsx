@@ -41,7 +41,7 @@ export const RowCard: React.FC<{ label: string, price: string, imageUrl: string,
             className="px-2 py-2 max-w-2xl bg-gray-100 border border-gray-100 rounded-[16px] flex items-center">
             <a href="#">
                 {/* eslint-disable-next-line jsx-a11y/alt-text */}
-                <Image onMouseDown={openProduct} className="rounded-t-lg" src="/images/img-2.png" width='100px'
+                <Image onMouseDown={openProduct} className="rounded-t-lg" src="https://storage.yandexcloud.net/ovg-store/img-2.jpg" width='100px'
                        height='100px'/>
             </a>
             <div className="flex-1 min-w-0 px-4 items-start" onMouseDown={openProduct}>

@@ -157,7 +157,7 @@ const Home: NextPage = () => {
                         {
                             Array.from({length: 10}).map((v) => (
                                 <div key={String(v) + "image"} className="flex-shrink-0 snap-center p-8">
-                                    <img className="rounded-t-lg" src="/images/img-2.png"
+                                    <img className="rounded-t-lg" src="https://storage.yandexcloud.net/ovg-store/img-2.jpg"
                                          width={isMobile ? "300px" : "300px"}
                                          height={isMobile ? "300px" : "300px"}/>
                                 </div>
@@ -180,7 +180,7 @@ const Home: NextPage = () => {
                                                 left: 150 + 332 * v
                                             })
                                         }}>
-                                    <img className="" src="/images/img-2.png"
+                                    <img className="" src="https://storage.yandexcloud.net/ovg-store/img-2.jpg"
                                          width={isMobile ? "48px" : "48px"}
                                          height={isMobile ? "48px" : "48px"}/>
                                 </button>

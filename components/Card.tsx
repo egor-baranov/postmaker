@@ -47,7 +47,7 @@ export const Card: React.FC<{ label: string, price: string, imageUrl: string, se
                 onMouseLeave={onMouseLeave}
             >
                 <a href="#">
-                    <Image className="rounded-t-lg" src="/images/img-2.png" width='300px' height='300px'
+                    <img className="rounded-t-lg" src="https://storage.yandexcloud.net/ovg-store/img-2.jpg" width='300px' height='300px'
                            onMouseDown={openProduct}/>
                 </a>
                 <div className="px-4" onMouseDown={openProduct}>

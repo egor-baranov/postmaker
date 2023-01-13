@@ -8,17 +8,16 @@ import {useRouter} from "next/router";
 
 const EmptyFavorite: React.FC<{ action: Function }> = ({action}) => {
     return (
-        <div className="w-full min-h-screen flex justify-around items-center">
-            <div className="flex flex-col items-center">
-                <h2 className="text-2xl pt-8 font-bold">В избранном пусто</h2>
-                <h2 className="text-medium pt-4 font-medium pb-4 text-center">Добавьте товары в избранное на главной
-                    странице</h2>
-                <button type="button"
-                        onClick={() => action()}
-                        className="text-black bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
-                    На главную
-                </button>
-            </div>
+        <div className="py-64 flex flex-col items-center justify-center">
+            <h2 className="text-2xl pt-8 font-bold">В избранном пусто</h2>
+            <h2 className="text-medium pt-4 font-medium pb-4 text-center">
+                Добавьте товары в избранное на главной странице
+            </h2>
+            <button type="button"
+                    onClick={() => action()}
+                    className="text-black bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
+                На главную
+            </button>
         </div>
     )
 }
@@ -60,8 +59,10 @@ const Home: NextPage = () => {
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8 font-bold">Избранное</h1>
 
+
             {favoriteCount() > 0 ? <Favorite count={count} updateFavorite={updateFavorite}/> :
-                <EmptyFavorite action={() => router.push("/")}/>}
+                <EmptyFavorite action={() => router.push("/")}/>
+            }
         </MainLayout>
     )
 }
