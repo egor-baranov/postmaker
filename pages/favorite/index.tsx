@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 
 const EmptyFavorite: React.FC<{ action: Function }> = ({action}) => {
     return (
-        <div className="py-64 flex flex-col items-center justify-center">
+        <div className="py-32 flex flex-col items-center justify-center">
             <h2 className="text-2xl pt-8 font-bold">В избранном пусто</h2>
             <h2 className="text-medium pt-4 font-medium pb-4 text-center">
                 Добавьте товары в избранное на главной странице
