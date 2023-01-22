@@ -12,6 +12,8 @@ import {useRouter} from "next/router";
 import clsx from "clsx";
 import colors from "tailwindcss/colors"
 import html from './index.module.css'
+import {CartModel, CartModelSchema} from "../../models/Cart";
+import {Model, ModelSchema} from "../../models/ProductSchema";
 
 const SizeButton: React.FC<{ text: string, onClick: Function, selected: boolean }> = ({text, onClick, selected}) => {
     return (
@@ -31,12 +33,22 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
     const [color, setColor] = useState<string>("black")
     const [favorite, setFavorite] = useState<boolean>(false)
 
+
     function updateSize(newSize: string) {
         setSize(newSize)
     }
 
     function updateColor(newColor: string) {
         setColor(newColor)
+    }
+
+    function buildModel(color: string, size: string) {
+        return {
+            product: {id: "", label: "Adidas x Pharrell Williams Basics Hoodie", description: "", price: 7940},
+            color: color,
+            size: size,
+            amount: 1
+        }
     }
 
     function addToFavorite() {
@@ -83,7 +95,7 @@ const ProductDetails: React.FC<{ addToCart: any, isMobile: boolean }> = ({addToC
                 <h1 className="text-2xl mb-4 pt-8 pb-2 font-bold text-center">7490 р.</h1>
 
                 <button type="button"
-                        onClick={addToCart}
+                        onClick={() => addToCart(buildModel(color, size))}
                         className="text-white bg-black hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-4 mb-2 mx-2">
                       <ShoppingBagOutlined/> В корзину
                 </button>
@@ -105,15 +117,22 @@ const Home: NextPage = () => {
 
     const imageCarouselRefContainer = useRef(null)
 
-    function addToCart() {
+    function addToCart(model: Model) {
+        const updatedCart = cart()
+        updatedCart.items.push(model)
+
+        window.localStorage.setItem("cart", JSON.stringify(updatedCart))
+        router.push("/cart")
+    }
+
+    function cart(): CartModel {
+        const emptyCart = '{ "items": [] }'
+
         if (typeof window == 'undefined') {
-            return
+            return CartModelSchema.parse(JSON.parse(emptyCart))
         }
 
-        const cartCount: number = Number(window.localStorage.getItem("cart-count"))
-        window.localStorage.setItem("cart-count", String(cartCount + 1))
-
-        router.push("/cart")
+        return CartModelSchema.parse(JSON.parse(window.localStorage.getItem("cart") ?? emptyCart))
     }
 
     function getWindowSize() {
@@ -141,7 +160,6 @@ const Home: NextPage = () => {
 
     const isMobile = windowSize.innerWidth <= 800
 
-    // @ts-ignore
     return (
         <MainLayout>
             <h1 className="text-3xl mb-4 pt-8 pb-4 font-bold">Adidas x Pharrell Williams Basics Hoodie</h1>
@@ -157,7 +175,8 @@ const Home: NextPage = () => {
                         {
                             Array.from({length: 10}).map((v) => (
                                 <div key={String(v) + "image"} className="flex-shrink-0 snap-center p-8">
-                                    <img className="rounded-t-lg" src="https://storage.yandexcloud.net/ovg-store/img-2.jpg"
+                                    <img className="rounded-t-lg"
+                                         src="https://storage.yandexcloud.net/ovg-store/img-2.png"
                                          width={isMobile ? "300px" : "300px"}
                                          height={isMobile ? "300px" : "300px"}/>
                                 </div>
@@ -180,7 +199,7 @@ const Home: NextPage = () => {
                                                 left: 150 + 332 * v
                                             })
                                         }}>
-                                    <img className="" src="https://storage.yandexcloud.net/ovg-store/img-2.jpg"
+                                    <img className="" src="https://storage.yandexcloud.net/ovg-store/img-2.png"
                                          width={isMobile ? "48px" : "48px"}
                                          height={isMobile ? "48px" : "48px"}/>
                                 </button>
