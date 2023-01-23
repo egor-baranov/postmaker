@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import {CartModel, CartModelSchema} from "../../models/Cart";
 import {Model, ModelSchema} from "../../models/ProductSchema";
 import {set, z} from "zod"
+import {YMaps, Map} from "@pbe/react-yandex-maps";
 
 const EmptyCart: React.FC<{ action: Function }> = ({action}) => {
     return (
@@ -57,6 +58,12 @@ const Cart: React.FC<{ items: Model[], onRemove: Function, onPlus: Function, onM
 
 
                 <h2 className="text-2xl mb-4 pt-8 font-bold">Адрес доставки</h2>
+
+                <YMaps>
+                    <div>
+                        <Map defaultState={{ center: [55.75, 37.57], zoom: 9}} width=''/>
+                    </div>
+                </YMaps>
 
                 <h2 className="text-2xl pt-8 font-bold">Оплата</h2>
 
