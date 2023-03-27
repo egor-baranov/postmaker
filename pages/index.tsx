@@ -10,11 +10,8 @@ import {CartModelSchema} from "../models/Cart";
 
 const Home: NextPage = () => {
 
-    async function getServerSideProps() {
-        const res = await fetch(process.env['NEXT_PUBLIC_BACKEND_URL']!! + "/product/123")
-        const data = await res.json()
-
-        return {props: {data}}
+    function onSelect() {
+        // implement floating text menu
     }
 
     return (
@@ -24,13 +21,14 @@ const Home: NextPage = () => {
                    placeholder="Title" required>
             </input>
             <textarea id="message" rows={40}
+                      onSelect={onSelect}
                       className="block font-thin pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
                       placeholder="Text">
 
             </textarea>
             <button
                 type="button"
-                className="absolute top-0 right-0 text-white text-4xl bg-black hover:bg-gray-900 font-medium text-sm px-8 py-6 mr-8 mt-8 border border-gray-200 rounded-[32px]">
+                className="absolute top-0 right-0 text-white text-2xl bg-black hover:bg-gray-900 font-medium text-sm px-8 py-4 mr-8 mt-8 border border-gray-200 rounded-[24px]">
                 Publish
             </button>
         </MainLayout>
