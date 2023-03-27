@@ -20,6 +20,31 @@ const Home: NextPage = () => {
                    className="block font-semibold w-full min-h-full text-7xl mt-16 p-4 pl-0 bg-white focus:outline-0"
                    placeholder="Title" required>
             </input>
+
+            <div
+                className="absolute top-8 bg-white border border-gray-300 rounded-lg flex justify-between text-sm py-4 px-2 text-gray-500">
+                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
+                    <div className="w-4 text-gray-900 font-bold">Т</div>
+                    <div>##Title</div>
+                </div>
+                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
+                    <div className="w-4 text-gray-900 font-bold">L</div>
+                    <div>[Link]</div>
+                </div>
+                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
+                    <div className="w-4 text-gray-900 font-bold">B</div>
+                    <div>*Bold*</div>
+                </div>
+                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
+                    <div className="w-4 text-gray-900 italic">i</div>
+                    <div>**Italic**</div>
+                </div>
+                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
+                    <div className="w-4 text-gray-900 monospace">m</div>
+                    <div>```Mono```</div>
+                </div>
+            </div>
+
             <textarea id="message" rows={40}
                       onSelect={onSelect}
                       className="block font-thin pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
