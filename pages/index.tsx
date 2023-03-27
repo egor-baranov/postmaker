@@ -17,58 +17,22 @@ const Home: NextPage = () => {
         return {props: {data}}
     }
 
-    function addToFavorite() {
-
-    }
-
     return (
         <MainLayout>
-            <h1 id="shirts" className="text-3xl mb-4 pt-16 font-bold">Футболки</h1>
+            <input type="text"
+                   className="block font-semibold w-full min-h-full text-7xl mt-16 p-4 pl-0 bg-white focus:outline-0"
+                   placeholder="Title" required>
+            </input>
+            <textarea id="message" rows="40"
+                      className="block font-thin pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
+                      placeholder="Text">
 
-            {/*{getServerSideProps().then(v => <text> {v.props.data as String} </text>)}*/}
-
-            <div className={clsx("grid gap-4", styles.grid)}>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-            </div>
-
-            <h1 id="hoodies" className="text-3xl mb-4 pt-16 font-bold">Толстовки</h1>
-            <div className={clsx("grid gap-4", styles.grid)}>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-            </div>
-
-            <h1 id="accessories" className="text-3xl mb-4 pt-16 font-bold">Аксессуары</h1>
-            <div className={clsx("grid gap-4", styles.grid)}>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-            </div>
-
-            <h1 id="sales" className="text-3xl mb-4 pt-16 font-bold">Скидки</h1>
-            <div className={clsx("grid gap-4 pb-16", styles.grid)}>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-                <Card label="Adidas x Pharrell Williams Basics Hoodie" price="7940" imageUrl=""
-                      selectedByDefault={false} onUpdate={addToFavorite}></Card>
-            </div>
+            </textarea>
+            <button
+                type="button"
+                className="absolute top-0 right-0 text-white text-4xl bg-black hover:bg-gray-900 font-medium text-sm px-8 py-6 mr-8 mt-8 border border-gray-200 rounded-[32px]">
+                Publish
+            </button>
         </MainLayout>
     )
 }

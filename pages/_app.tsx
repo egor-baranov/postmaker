@@ -9,8 +9,8 @@ export default function MyApp({Component, pageProps}: AppProps) {
     return (
         <HeaderLayout>
             <Head>
-                <title>OVG</title>
-                <meta name="application-name" content="OVG Store"/>
+                <title>Postmaker</title>
+                <meta name="application-name" content="Postmaker for Telegram"/>
                 <meta name="apple-mobile-web-app-capable" content="yes"/>
                 <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
                 <meta name="apple-mobile-web-app-title" content="OVG Store"/>
@@ -20,7 +20,6 @@ export default function MyApp({Component, pageProps}: AppProps) {
                 <meta name="theme-color" content="#FFFFFF"/>
             </Head>
             <Component {...pageProps} > </Component>
-            <Footer/>
         </HeaderLayout>
     )
 }

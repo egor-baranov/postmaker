@@ -7,6 +7,7 @@ import {
     ShoppingCart,
     Telegram
 } from "@mui/icons-material"
+import "@mui/material/utils"
 import clsx from "clsx"
 import Link from "next/link"
 import React, { ReactNode } from "react"

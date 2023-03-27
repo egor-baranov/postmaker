@@ -31,11 +31,12 @@ export const HeaderLayout: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     return (
         <>
-            { isMobile ? <MobileNavBar /> : <Header/>}
-            <>
-                {children}
-            </>
+            {children}
         </>
+        // <>
+        //     { isMobile ? <MobileNavBar /> : <Header/>}
+        //
+        // </>
     )
 }
 
