@@ -23,7 +23,7 @@ const Home: NextPage = () => {
                    className="block font-semibold w-full min-h-full text-7xl mt-16 p-4 pl-0 bg-white focus:outline-0"
                    placeholder="Title" required>
             </input>
-            <textarea id="message" rows="40"
+            <textarea id="message" rows={40}
                       className="block font-thin pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
                       placeholder="Text">
 
