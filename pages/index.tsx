@@ -7,6 +7,7 @@ import {Footer} from "../components/Footer";
 import React from "react";
 import {func} from "prop-types";
 import {CartModelSchema} from "../models/Cart";
+import {Fab, TextareaAutosize} from "@mui/material";
 
 const Home: NextPage = () => {
 
@@ -45,15 +46,15 @@ const Home: NextPage = () => {
                 </div>
             </div>
 
-            <textarea id="message" rows={40}
-                      onSelect={onSelect}
-                      className="block font-thin pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
-                      placeholder="Text">
+            <TextareaAutosize
+                draggable="false"
+                className="block font-thin mb-8 pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
+                placeholder="Text"
+            />
 
-            </textarea>
             <button
                 type="button"
-                className="absolute top-0 right-0 text-white text-2xl bg-black hover:bg-gray-900 font-medium text-sm px-8 py-4 mr-8 mt-8 border border-gray-200 rounded-[24px]">
+                className="fixed bottom-0 right-0 text-white text-2xl bg-black hover:bg-gray-900 font-medium text-sm px-8 py-4 mr-8 mb-8 border border-gray-200 rounded-[24px]">
                 Publish
             </button>
         </MainLayout>

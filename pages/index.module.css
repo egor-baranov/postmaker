@@ -11,3 +11,7 @@
         justify-self: start;
     }
 }
+
+textarea {
+    resize: none;
+}
