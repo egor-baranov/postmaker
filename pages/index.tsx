@@ -6,15 +6,68 @@ import clsx from "clsx";
 import {Footer} from "../components/Footer";
 import React from "react";
 import {func} from "prop-types";
+// @ts-ignore
 import {CartModelSchema} from "../models/Cart";
-import {Fab, TextareaAutosize} from "@mui/material";
+
+
+import {createTheme, Fab, Menu, MenuItem, TextareaAutosize} from "@mui/material";
+import {Simulate} from "react-dom/test-utils";
+import select = Simulate.select;
+import MUIRichTextEditor, {TMUIRichTextEditorStyles} from "mui-rte";
+import {ThemeProvider} from "@mui/styles";
+import {fontSize, Theme} from "@mui/system";
 
 const Home: NextPage = () => {
 
-    function onSelect() {
-        // implement floating text menu
+    const [contextMenu, setContextMenu] = React.useState<{
+        mouseX: number;
+        mouseY: number;
+    } | null>(null);
+
+    const defaultTheme: Theme = createTheme({
+        typography: {
+            fontSize: 32,
+            fontFamily: [
+                'Inter',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                '"Segoe UI"',
+                'Roboto',
+                '"Helvetica Neue"',
+                'Arial',
+                'sans-serif',
+                '"Apple Color Emoji"',
+                '"Segoe UI Emoji"',
+                '"Segoe UI Symbol"',
+            ].join(','),
+        },
+        palette: {
+            primary: {
+                main: "#ffffff"
+            }
+        }
+    })
+
+    const muiRteTheme: TMUIRichTextEditorStyles = {
+        overrides: {
+            MUIRichTextEditor: {
+                editor: {
+                    fontWeight: "lighter",
+                },
+                placeHolder: {
+                    backgroundColor: "#ffffff",
+                    color: "#9DA3AE",
+                    width: "inherit",
+                    fontWeight: "lighter"
+                },
+            }
+        }
     }
 
+    Object.assign(defaultTheme, muiRteTheme)
+
+    // @ts-ignore
+    // todo: refactor to lexical
     return (
         <MainLayout>
             <input type="text"
@@ -22,35 +75,15 @@ const Home: NextPage = () => {
                    placeholder="Title" required>
             </input>
 
-            <div
-                className="absolute top-8 bg-white border border-gray-300 rounded-lg flex justify-between text-sm py-4 px-2 text-gray-500">
-                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
-                    <div className="w-4 text-gray-900 font-bold">Т</div>
-                    <div>##Title</div>
-                </div>
-                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
-                    <div className="w-4 text-gray-900 font-bold">L</div>
-                    <div>[Link]</div>
-                </div>
-                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
-                    <div className="w-4 text-gray-900 font-bold">B</div>
-                    <div>*Bold*</div>
-                </div>
-                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
-                    <div className="w-4 text-gray-900 italic">i</div>
-                    <div>**Italic**</div>
-                </div>
-                <div className="flex hover:bg-gray-100 py-1 px-3 rounded">
-                    <div className="w-4 text-gray-900 monospace">m</div>
-                    <div>```Mono```</div>
-                </div>
+            <div className="ml-8">
+            <ThemeProvider theme={defaultTheme}>
+                <MUIRichTextEditor
+                    toolbar={false}
+                    inlineToolbar={true}
+                    label="Text">
+                </MUIRichTextEditor>
+            </ThemeProvider>
             </div>
-
-            <TextareaAutosize
-                draggable="false"
-                className="block font-thin mb-8 pt-8 pl-4 w-full text-sm text-4xl text-gray-900 bg-white focus:outline-0 rounded-lg border-transparent"
-                placeholder="Text"
-            />
 
             <button
                 type="button"
