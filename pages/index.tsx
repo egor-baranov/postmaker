@@ -76,12 +76,12 @@ const Home: NextPage = () => {
             </input>
 
             <div className="ml-8">
+
             <ThemeProvider theme={defaultTheme}>
                 <MUIRichTextEditor
                     toolbar={false}
                     inlineToolbar={true}
-                    label="Text">
-                </MUIRichTextEditor>
+                    label="Text"/>
             </ThemeProvider>
             </div>
 
