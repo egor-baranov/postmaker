@@ -9,65 +9,13 @@ import {func} from "prop-types";
 // @ts-ignore
 import {CartModelSchema} from "../models/Cart";
 
-
-import {createTheme, Fab, Menu, MenuItem, TextareaAutosize} from "@mui/material";
 import {Simulate} from "react-dom/test-utils";
 import select = Simulate.select;
-import MUIRichTextEditor, {TMUIRichTextEditorStyles} from "mui-rte";
 import {ThemeProvider} from "@mui/styles";
 import {fontSize, Theme} from "@mui/system";
+import {Editor} from "../components/LexicalEditor";
 
 const Home: NextPage = () => {
-
-    const [contextMenu, setContextMenu] = React.useState<{
-        mouseX: number;
-        mouseY: number;
-    } | null>(null);
-
-    const defaultTheme: Theme = createTheme({
-        typography: {
-            fontSize: 32,
-            fontFamily: [
-                'Inter',
-                '-apple-system',
-                'BlinkMacSystemFont',
-                '"Segoe UI"',
-                'Roboto',
-                '"Helvetica Neue"',
-                'Arial',
-                'sans-serif',
-                '"Apple Color Emoji"',
-                '"Segoe UI Emoji"',
-                '"Segoe UI Symbol"',
-            ].join(','),
-        },
-        palette: {
-            primary: {
-                main: "#ffffff"
-            }
-        }
-    })
-
-    const muiRteTheme: TMUIRichTextEditorStyles = {
-        overrides: {
-            MUIRichTextEditor: {
-                editor: {
-                    fontWeight: "lighter",
-                },
-                placeHolder: {
-                    backgroundColor: "#ffffff",
-                    color: "#9DA3AE",
-                    width: "inherit",
-                    fontWeight: "lighter"
-                },
-            }
-        }
-    }
-
-    Object.assign(defaultTheme, muiRteTheme)
-
-    // @ts-ignore
-    // todo: refactor to lexical
     return (
         <MainLayout>
             <input type="text"
@@ -75,15 +23,7 @@ const Home: NextPage = () => {
                    placeholder="Title" required>
             </input>
 
-            <div className="ml-8">
-
-            <ThemeProvider theme={defaultTheme}>
-                <MUIRichTextEditor
-                    toolbar={false}
-                    inlineToolbar={true}
-                    label="Text"/>
-            </ThemeProvider>
-            </div>
+            <Editor/>
 
             <button
                 type="button"
