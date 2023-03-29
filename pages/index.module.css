@@ -17,7 +17,7 @@ textarea {
 }
 
 @layer base {
-    html {
+    input {
         -webkit-tap-highlight-color: transparent;
     }
 }
