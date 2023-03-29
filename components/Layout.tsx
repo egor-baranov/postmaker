@@ -15,6 +15,7 @@ export const MainLayoutNoMargin: React.FC<{ children: ReactNode; className?: str
         <main className={clsx("max-2w-xl mx-auto pt-4", className)}>
             <HeaderSpacer />
             {children}
+            <HeaderSpacer />
         </main>
     )
 }

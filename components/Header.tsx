@@ -49,15 +49,6 @@ export const Header: React.FC = () => {
                     <Search />
                 </HeaderLinkIcon>
             </div>
-
-            {/*<ul className={clsx("menu flex items-center align-center", styles.menu)}>*/}
-            {/*    <li className="menu-item">*/}
-            {/*        <button>Menu 1</button>*/}
-            {/*    </li>*/}
-            {/*    <li className="menu-item">*/}
-            {/*        <button>Menu 2</button>*/}
-            {/*    </li>*/}
-            {/*</ul>*/}
         </div>
     )
 }

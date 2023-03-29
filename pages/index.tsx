@@ -24,7 +24,7 @@ const Home: NextPage = () => {
                    placeholder="Title" required>
             </input>
 
-            <Editor/>
+            <div className="pb-16"> <Editor/> </div>
 
             <button
                 type="button"

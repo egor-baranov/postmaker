@@ -14,6 +14,7 @@ import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
 import {selector} from "postcss-selector-parser";
 import {SetStateAction, useCallback, useRef, useState} from "react";
 import {useTextSelection} from "./utils/text_selection";
+import {debug, debuglog} from "util";
 
 type ClientRect = Record<keyof Omit<DOMRect, "toJSON">, number>
 
@@ -34,9 +35,10 @@ function onChange(state: any) {
 export const FloatingToolbar = (clientRect: ClientRect | undefined | null, isCollapsed: boolean | undefined) => {
     return ((clientRect !== null && clientRect !== undefined && isCollapsed !== undefined && !isCollapsed) ?
             <div className={css`
-              position: absolute;
-              left: ${clientRect!!.left + clientRect!!.width / 2 - 108}px;
-              top: ${clientRect!!.y - 210}px;
+              position: fixed;
+              left: ${clientRect!!.left + clientRect!!.width / 2 - 105}px;
+              top: ${clientRect!!.top - 40}px;
+              margin-left: 150px;
             `}><Toolbar/></div> : <div/>
     )
 }
