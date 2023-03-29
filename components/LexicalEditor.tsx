@@ -15,6 +15,7 @@ import {selector} from "postcss-selector-parser";
 import {SetStateAction, useCallback, useRef, useState} from "react";
 import {useTextSelection} from "./utils/text_selection";
 
+type ClientRect = Record<keyof Omit<DOMRect, "toJSON">, number>
 
 type LexicalEditorProps = {
     config: Parameters<typeof LexicalComposer>['0']['initialConfig'];
@@ -29,6 +30,16 @@ function onChange(state: any) {
     });
 }
 
+
+export const FloatingToolbar = (clientRect: ClientRect | undefined | null, isCollapsed: boolean | undefined) => {
+    return ((clientRect !== null && clientRect !== undefined && isCollapsed !== undefined && !isCollapsed) ?
+            <div className={css`
+              position: absolute;
+              left: ${clientRect!!.left + clientRect!!.width / 2 - 108}px;
+              top: ${clientRect!!.y - 210}px;
+            `}><Toolbar/></div> : <div/>
+    )
+}
 
 export const LexicalEditor = (props: LexicalEditorProps) => {
     const [target, setTarget] = useState<HTMLElement>()
@@ -48,12 +59,8 @@ export const LexicalEditor = (props: LexicalEditorProps) => {
         <LexicalComposer initialConfig={props.config}>
             <div className="editor-container">
                 <div className="editor-inner">
-                    {clientRect != null && !isCollapsed ?
-                        <div className={css`
-                          position: absolute;
-                          left: ${clientRect!!.left + clientRect!!.width / 2 - 108}px;
-                          top: ${clientRect!!.y - 210}px;
-                        `}><Toolbar/></div> : <div/>}
+
+                    {FloatingToolbar(clientRect, isCollapsed)}
 
                     <div ref={ref}>
                         <RichTextPlugin

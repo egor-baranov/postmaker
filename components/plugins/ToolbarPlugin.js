@@ -30,7 +30,7 @@ import {
 library.add(faBold, faStrikethrough, faItalic, faUnderline, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faRotateLeft, faRotateRight)
 
 
-export default function Toolbar({target}) {
+export default function Toolbar() {
     const [editor] = useLexicalComposerContext();
     const [isBold, setIsBold] = React.useState(false);
     const [isItalic, setIsItalic] = React.useState(false);
