@@ -2,6 +2,9 @@ import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
+// @ts-ignore
+import Toolbar from './plugins/ToolbarPlugin';
+
 
 type LexicalEditorProps = {
     config: Parameters<typeof LexicalComposer>['0']['initialConfig'];
@@ -10,11 +13,16 @@ type LexicalEditorProps = {
 export function LexicalEditor(props: LexicalEditorProps) {
     return (
         <LexicalComposer initialConfig={props.config}>
-            <RichTextPlugin
-                contentEditable={<ContentEditable />}
-                placeholder={<Placeholder />}
-                ErrorBoundary={LexicalErrorBoundary}
-            />
+            <div className="editor-container">
+                <div className="editor-inner">
+                    <Toolbar />
+                    <RichTextPlugin
+                        contentEditable={<ContentEditable />}
+                        placeholder={<Placeholder />}
+                        ErrorBoundary={LexicalErrorBoundary}
+                    />
+                </div>
+            </div>
         </LexicalComposer>
     );
 }
