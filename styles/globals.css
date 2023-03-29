@@ -19,6 +19,7 @@ html, body, #__next {
 }
 
 
-*{
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+* {
+    -webkit-tap-highlight-color: transparent;
+    outline: red!important;
 }
