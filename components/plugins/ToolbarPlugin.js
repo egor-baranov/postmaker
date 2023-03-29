@@ -30,7 +30,7 @@ import {
 library.add(faBold, faStrikethrough, faItalic, faUnderline, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faRotateLeft, faRotateRight)
 
 
-export default function Toolbar() {
+export default function Toolbar({target}) {
     const [editor] = useLexicalComposerContext();
     const [isBold, setIsBold] = React.useState(false);
     const [isItalic, setIsItalic] = React.useState(false);
@@ -60,7 +60,7 @@ export default function Toolbar() {
 
     return (
         <div
-            className="fixed z-20 shadow bottom-8 left-1/2 transform -translate-x-1/2 min-w-52 h-10 px-2 py-2 bg-black mb-4 space-x-2 flex items-center rounded-xl">
+            className="shadow bottom-8 left-1/2 transform -translate-x-1/2 min-w-52 h-10 px-2 py-2 bg-black mb-4 space-x-2 flex items-center rounded-xl">
             <button
                 className={clsx(
                     'px-1 hover:bg-gray-700 transition-colors duration-100 ease-in rounded',
