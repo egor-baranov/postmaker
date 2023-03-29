@@ -17,3 +17,8 @@ html, body, #__next {
     height: 100%;
     /*display: flex*/
 }
+
+
+input {
+    -webkit-tap-highlight-color: transparent;
+}

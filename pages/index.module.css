@@ -15,7 +15,3 @@
 textarea {
     resize: none;
 }
-
-input {
-    -webkit-tap-highlight-color: transparent;
-}
