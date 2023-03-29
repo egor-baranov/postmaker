@@ -29,14 +29,6 @@ import {
 
 library.add(faBold, faStrikethrough, faItalic, faUnderline, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faRotateLeft, faRotateRight)
 
-function onChange(state) {
-    state.read(() => {
-        const root = $getRoot();
-        const selection = $getSelection();
-
-        console.log(selection);
-    });
-}
 
 export default function Toolbar() {
     const [editor] = useLexicalComposerContext();

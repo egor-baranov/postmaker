@@ -2,13 +2,27 @@ import { LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
+import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
+import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
+import { mergeRegister } from '@lexical/utils';
 // @ts-ignore
 import Toolbar from './plugins/ToolbarPlugin';
+import {$getRoot, $getSelection} from "lexical";
 
 
 type LexicalEditorProps = {
     config: Parameters<typeof LexicalComposer>['0']['initialConfig'];
 };
+
+function onChange(state: any) {
+    state.read(() => {
+        const root = $getRoot();
+        const selection = $getSelection();
+
+        console.log(selection);
+    });
+}
+
 
 export function LexicalEditor(props: LexicalEditorProps) {
     return (
@@ -23,6 +37,8 @@ export function LexicalEditor(props: LexicalEditorProps) {
                     />
                 </div>
             </div>
+            <OnChangePlugin onChange={onChange} />
+            <HistoryPlugin />
         </LexicalComposer>
     );
 }
