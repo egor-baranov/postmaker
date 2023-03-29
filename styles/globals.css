@@ -19,12 +19,6 @@ html, body, #__next {
 }
 
 
-* {
-    -webkit-tap-highlight-color: transparent;
-}
-
-@layer base {
-    * {
-        -webkit-tap-highlight-color: transparent;
-    }
+*{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
