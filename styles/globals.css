@@ -19,6 +19,12 @@ html, body, #__next {
 }
 
 
-input {
+html {
     -webkit-tap-highlight-color: transparent;
+}
+
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
 }

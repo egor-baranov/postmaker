@@ -19,6 +19,7 @@ const Home: NextPage = () => {
     return (
         <MainLayout>
             <input type="text"
+                   style = {{}}
                    className="block font-semibold w-full min-h-full text-5xl mt-16 p-4 pl-0 bg-white focus:outline-0"
                    placeholder="Title" required>
             </input>
