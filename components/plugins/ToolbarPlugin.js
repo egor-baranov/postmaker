@@ -9,9 +9,25 @@ import {
     UNDO_COMMAND,
     REDO_COMMAND,
 } from 'lexical';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { mergeRegister } from '@lexical/utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useLexicalComposerContext} from '@lexical/react/LexicalComposerContext';
+import {mergeRegister} from '@lexical/utils';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {
+    faBold,
+    faStrikethrough,
+    faItalic,
+    faUnderline,
+    faAlignLeft,
+    faAlignCenter,
+    faAlignRight,
+    faAlignJustify,
+    faRotateLeft,
+    faRotateRight
+} from '@fortawesome/free-solid-svg-icons';
+
+library.add(faBold, faStrikethrough, faItalic, faUnderline, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faRotateLeft, faRotateRight)
 
 function onChange(state) {
     state.read(() => {
@@ -42,7 +58,7 @@ export default function Toolbar() {
 
     React.useEffect(() => {
         return mergeRegister(
-            editor.registerUpdateListener(({ editorState }) => {
+            editor.registerUpdateListener(({editorState}) => {
                 editorState.read(() => {
                     updateToolbar();
                 });
@@ -51,7 +67,8 @@ export default function Toolbar() {
     }, [updateToolbar, editor]);
 
     return (
-        <div className="fixed z-20 shadow bottom-8 left-1/2 transform -translate-x-1/2 min-w-52 h-10 px-2 py-2 bg-black mb-4 space-x-2 flex items-center rounded-xl">
+        <div
+            className="fixed z-20 shadow bottom-8 left-1/2 transform -translate-x-1/2 min-w-52 h-10 px-2 py-2 bg-black mb-4 space-x-2 flex items-center rounded-xl">
             <button
                 className={clsx(
                     'px-1 hover:bg-gray-700 transition-colors duration-100 ease-in rounded',
@@ -175,7 +192,7 @@ export default function Toolbar() {
                 }}
             >
                 <FontAwesomeIcon
-                    icon="fa-solid fa-coffee"
+                    icon="fa-solid fa-rotate-left"
                     style={{color: "#ffffff",}}
                     className="text-white w-3.5 h-3.5"
                 />
@@ -189,7 +206,7 @@ export default function Toolbar() {
                 }}
             >
                 <FontAwesomeIcon
-                    icon="fa-solid fa-coffee"
+                    icon="fa-solid fa-rotate-right"
                     style={{color: "#ffffff",}}
                     className="text-white w-3.5 h-3.5"
                 />
