@@ -97,7 +97,7 @@ export function Editor() {
                 config={{
                     namespace: 'lexical-editor',
                     theme: {
-                        root: 'p-4 text-2xl font-light border-slate-500 bg-gray-50 border-0 rounded h-full min-h-[200px] focus:outline-none rounded-2xl',
+                        root: 'p-4 text-xl font-light border-slate-500 bg-gray-50 border-0 rounded h-full min-h-[200px] focus:outline-none rounded-2xl',
                         link: 'cursor-pointer',
                         text: {
                             bold: 'font-semibold',
