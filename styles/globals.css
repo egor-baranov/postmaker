@@ -19,12 +19,12 @@ html, body, #__next {
 }
 
 
-html {
+* {
     -webkit-tap-highlight-color: transparent;
 }
 
 @layer base {
-    html {
+    * {
         -webkit-tap-highlight-color: transparent;
     }
 }
