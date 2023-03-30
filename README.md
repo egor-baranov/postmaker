@@ -21,6 +21,9 @@ Web-editor for Telegram posts hosting at https://postmaker-six.vercel.app/ (soon
 2. **React & Next.js & Typescript for basics of website**
 3. **Tailwind & Mui for decoration**
 
+### Example
+<img width="1313" alt="image" src="https://user-images.githubusercontent.com/49813134/228808219-a3b540b0-06a4-408c-a605-25ce5042e46d.png">
+
 ### Telegram bot repository
 Soon
 
