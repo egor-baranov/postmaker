@@ -16,6 +16,7 @@ Web-editor for Telegram posts hosting at https://postmaker-six.vercel.app/ (soon
 4. **Telegram channel connection & posting**
 5. **Generation & webflow for complex posts with images**
 6. **Support for links and code blocks**
+7. **Optimized mobile version**
 
 ### Used tech solutions
 1. **Lexical**
