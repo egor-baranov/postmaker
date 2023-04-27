@@ -96,34 +96,18 @@ export const MobileNavBar: React.FC = () => {
     }
 
     return (
-        <div className={clsx("w-full fixed z-50 top-0 bg-white", styles.header)}>
-            <div className="mx-auto max-w-2xl flex flex-row items-center pr-2">
+        <div className={clsx("w-full fixed z-40 top-0 bg-white", styles.header)}>
+            <div className="mx-auto max-w-2xl flex flex-row items-start pr-2">
 
-                <button className="p-2 rounded-lg hover:bg-gray-100" onClick={() => setIsOpen(true)}>
-                    <Menu sx={{fontSize: "32px"}}/>
-                </button>
+                <a href={"https://postmaker-six.vercel.app"}
+                   className="mb-1 text-xl font-bold text-gray-900 dark:text-gray-900 text-left py-3 pl-8">
+                    Postmaker
+                </a>
 
-                <div className="flex-grow"></div>
-
-                <Link href="/cart">
-                    <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Корзина">
-                        <ShoppingBagOutlined sx={{fontSize: "32px"}}/>
-                    </a>
-                </Link>
-
-                <Link href="/favorite">
-                    <a className="p-2 m-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Избранное">
-                        <FavoriteBorder sx={{fontSize: "32px"}}/>
-                    </a>
-                </Link>
-
-                <Link href="/search">
-                    <a className="p-2 rounded-lg leading-none hover:bg-gray-100 flex-shrink-0" aria-label="Поиск">
-                        <Search sx={{fontSize: "32px"}}/>
-                    </a>
-                </Link>
-
-                {isOpen ? <DropdownMenu onHide={() => setIsOpen(false)}></DropdownMenu> : null}
+                <a href={"https://kepler88d.dev"}
+                   className="mb-1 text-xl font-thin text-gray-900 dark:text-gray-900 text-left py-3 pl-2">
+                    by kepler88d
+                </a>
             </div>
         </div>
     )

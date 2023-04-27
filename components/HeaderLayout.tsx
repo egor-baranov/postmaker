@@ -1,9 +1,9 @@
 import React, {ReactNode, useEffect, useState} from "react"
-import { Header } from "./Header"
+import {Header} from "./Header"
 import {Footer} from "./Footer";
 import {MobileNavBar} from "./MobileNavBar";
 
-export const HeaderLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const HeaderLayout: React.FC<{ children: ReactNode }> = ({children}) => {
     function getWindowSize() {
         if (typeof window !== "undefined") {
             const {innerWidth, innerHeight} = window;
@@ -31,13 +31,12 @@ export const HeaderLayout: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     return (
         <>
-            {children}
+            {isMobile ? <MobileNavBar/> : <Header/>}
+            <>
+                {children}
+            </>
         </>
-        // <>
-        //     { isMobile ? <MobileNavBar /> : <Header/>}
-        //
-        // </>
     )
 }
 
-export const HeaderSpacer: React.FC = () => <div style={{ height: "calc(56px + env(safe-area-inset-top))" }} />
+export const HeaderSpacer: React.FC = () => <div style={{height: "calc(56px + env(safe-area-inset-top))"}}/>
