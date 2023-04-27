@@ -97,7 +97,7 @@ export const MobileNavBar: React.FC = () => {
 
     return (
         <div className={clsx("w-full fixed z-40 top-0 bg-white", styles.header)}>
-            <div className="mx-auto max-w-2xl flex flex-row items-start pr-2">
+            <div className="mx-auto max-w-full mt-4 flex flex-row items-start pr-2">
 
                 <a href={"https://postmaker-six.vercel.app"}
                    className="mb-1 text-xl font-bold text-gray-900 dark:text-gray-900 text-left py-3 pl-8">
@@ -108,6 +108,12 @@ export const MobileNavBar: React.FC = () => {
                    className="mb-1 text-xl font-thin text-gray-900 dark:text-gray-900 text-left py-3 pl-2">
                     by kepler88d
                 </a>
+
+                <button
+                    type="button"
+                    className="fixed top-3 right-0 text-white text-2xl bg-blue-500 hover:bg-blue-600 font-medium text-sm px-6 py-3 mr-4 mb-4 border border-gray-200 rounded-[16px]">
+                    Login
+                </button>
             </div>
         </div>
     )

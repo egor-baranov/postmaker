@@ -44,7 +44,7 @@ const Home: NextPage = () => {
 
     return (
         <div>
-            <div className={isMobile ? "px-4 pt-16" : "px-32 pt-32"}>
+            <div className={isMobile ? "px-8 pt-16" : "px-32 pt-32"}>
                 <MainLayout>
 
                     <input type="text"
@@ -75,7 +75,14 @@ const Home: NextPage = () => {
                    className="mb-1 text-xl font-thin text-gray-900 dark:text-gray-900 text-left py-3 pl-2">
                     by kepler88d
                 </a>
+
+                <button
+                    type="button"
+                    className="fixed top-4 right-0 text-white text-2xl bg-blue-500 hover:bg-blue-600 font-medium text-sm px-6 py-3 mr-4 mb-4 border border-gray-200 rounded-[16px]">
+                    Login
+                </button>
             </div>}
+
         </div>
     )
 }
