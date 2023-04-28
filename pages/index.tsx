@@ -44,12 +44,12 @@ const Home: NextPage = () => {
 
     return (
         <div>
-            <div className={isMobile ? "px-8 pt-16" : "px-32 pt-32"}>
+            <div className={isMobile ? "px-4 pt-16" : "px-32 pt-32"}>
                 <MainLayout>
 
                     <input type="text"
                            style={{}}
-                           className="block font-semibold w-full min-h-full text-5xl p-4 pl-0 bg-white focus:outline-0"
+                           className="block font-semibold w-full min-h-full text-3xl p-4 pl-0 bg-white focus:outline-0"
                            placeholder="Title" required>
                     </input>
 
