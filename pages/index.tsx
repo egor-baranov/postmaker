@@ -49,11 +49,11 @@ const Home: NextPage = () => {
 
                     <input type="text"
                            style={{}}
-                           className="block font-semibold w-full min-h-full text-3xl p-4 pl-0 bg-white focus:outline-0"
+                           className="block font-semibold w-full min-h-full text-3xl p-4 pl-4 bg-white focus:outline-0"
                            placeholder="Title" required>
                     </input>
 
-                    <div className="pb-16"><Editor/></div>
+                    <div className="pb-4"><Editor/></div>
 
                     <button
                         type="button"
